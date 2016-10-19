@@ -1,0 +1,31 @@
+.item-head.red{
+    background: #F44336;
+}
+.item-head.pink{
+    background: #E91E63;
+}
+.item-head.purple{
+    background: #9C27B0;
+}
+.item-head.yellow{
+    background: #FFEB3B;
+    color: rgba(0, 0, 0, 0.87);
+}
+.item-head.lime{
+    background: #CDDC39;
+    color: rgba(0, 0, 0, 0.87);
+}
+.item-head.orange{
+    background: #FF9800;
+    color: rgba(0, 0, 0, 0.87);
+}
+.item-head.blue{
+    background: #2196F3;
+}
+.item-head.cyan{
+    background: #00BCD4;
+    color: rgba(0, 0, 0, 0.87);
+}
+.item-head.teal{
+    background: #009688;
+}

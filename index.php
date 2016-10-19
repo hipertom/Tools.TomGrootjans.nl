@@ -6,9 +6,15 @@
     <body ng-controller="Ctrl">
         <div class="container-fluid" >
             <div class="row">
-                <div class="col-md-1 tool-block" ng-repeat="item in items">
-                    {{item.name}}
+                <div class="col-md-1 item" ng-repeat="item in items">
+                    <div class="item-head {{item.color}}">
+                        <span>{{item.tag}}</span>
+                    </div>
+                    <div class="item-title">
+                        <span class="lead">{{item.name}}</span>
+                    </div>
                 </div>
+
             </div>
         </div>
 
@@ -17,5 +23,6 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <!-- Include all compiled plugins (below), or include individual files as needed -->
         <script src="js/bootstrap.min.js"></script>
+        <script src="js/MyOnLoad.js"></script>
     </body>
 </html>

@@ -1,4 +1,19 @@
-.tool-block{
-    background: #ededed;
-    height: 100px;
+body{
+    background: #EFEFEF;
+    font-family: 'Roboto', sans-serif;
+}
+
+.item{
+    padding: 0;
+    margin: 5px 0 5px 5px;
+    background: #FFFEFF;
+}
+.item-head{
+    color: white;
+    text-align: center;
+    font-size: 60px;
+    padding-top: calc(50% - 42px);
+}
+.item-title{
+    padding: 3px 10px;
 }
