@@ -1,14 +1,13 @@
 <!DOCTYPE html>
-<html lang="en" ng-app>
+<html ng-app="toolsApp" lang="en">
   <head>
       <?php require_once('incl/head.html'); ?>
-
     </head>
-    <body>
-        <div class="container-fluid">
+    <body ng-controller="Ctrl">
+        <div class="container-fluid" >
             <div class="row">
-                <div class="col-md-1 tool-block">
-
+                <div class="col-md-1 tool-block" ng-repeat="item in items">
+                    {{item.name}}
                 </div>
             </div>
         </div>
