@@ -5,15 +5,28 @@ body{
 
 .item{
     padding: 0;
-    margin: 5px 0 5px 5px;
+    margin: 10px 0 0 10px;
     background: #FFFEFF;
+    border-radius: 2px;
+
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
+.item:hover{
+    cursor: pointer;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    transform: scale(1.01);
 }
 .item-head{
+    border-top-right-radius: 2px;
+    border-top-left-radius: 2px;
     color: white;
     text-align: center;
     font-size: 60px;
     padding-top: calc(50% - 42px);
 }
 .item-title{
-    padding: 3px 10px;
+    border-bottom-left-radius: 2px;
+    border-bottom-right-radius: 2px;
+    padding: 5px 10px;
 }

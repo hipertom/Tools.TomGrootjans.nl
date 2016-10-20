@@ -3,7 +3,7 @@
   <head>
       <?php require_once('incl/head.html'); ?>
     </head>
-    <body ng-controller="Ctrl">
+    <body ng-controller="myController">
         <div class="container-fluid" >
             <div class="row">
                 <div class="col-md-1 item" ng-repeat="item in items">

@@ -1,9 +1,13 @@
-var toolsApp = angular.module('toolsApp', []);
+(function(){
+    var app = angular.module('toolsApp', []);
 
-toolsApp.controller('Ctrl', function Ctrl($scope) {
-    $scope.Test = 4;
+    app.controller('myController', function($scope){
+        $scope.Test = 4;
 
-    $scope.items = [
+        $scope.items = items;
+    });
+
+    var items = [
         {tag: "T1", name: "Test 1", color: "red"},
         {tag: "T2", name: "Test 2", color: "pink"},
         {tag: "T3", name: "Test 3", color: "purple"},
@@ -14,4 +18,5 @@ toolsApp.controller('Ctrl', function Ctrl($scope) {
         {tag: "T3", name: "Test 3", color: "cyan"},
         {tag: "T3", name: "Test 3", color: "teal"},
     ];
-})
+
+})();
