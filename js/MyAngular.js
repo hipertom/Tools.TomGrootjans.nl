@@ -1,26 +1,33 @@
-angular.module('toolsApp', ['ngMaterial'])
-.controller('myController', function($scope, $mdDialog){
-    $scope.status = '  ';
-    $scope.customFullscreen = false;
+(function(angular, undefined){
+  "use strict";
 
+  angular
+   .module('toolsApp', ['ngMaterial'])
+   .controller('myController', AppController);
+
+  function AppController($scope, $mdDialog) {
+
+    $scope.showDialog = showDialog;
     $scope.items = items;
 
-    $scope.showAdvanced = function(ev) {
-        $mdDialog.show({
-            controller: DialogController,
-            templateUrl: 'items/item.temp.html',
-            parent: angular.element(document.body),
-            targetEvent: ev,
-            clickOutsideToClose:true,
-            fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
-        })
-        .then(function(answer) {
-          $scope.status = 'You said the information was "' + answer + '".';
-        }, function() {
-          $scope.status = 'You cancelled the dialog.';
-        });
-    };
-});
+    function showDialog($event) {
+       var parentEl = angular.element(document.body);
+       $mdDialog.show({
+         parent: parentEl,
+         targetEvent: $event,
+         templateUrl: 'items/item.temp.html',
+         clickOutsideToClose:true,
+         fullscreen: true, // Only for -xs, -sm breakpoints.
+         controller: DialogController
+      });
+      function DialogController($scope, $mdDialog) {
+        $scope.closeDialog = function() {
+          $mdDialog.hide();
+        }
+      }
+    }
+  }
+})(angular);
 
 var items = [
     {tag: "T1", name: "Test 1", color: "red"},
@@ -33,19 +40,3 @@ var items = [
     {tag: "T3", name: "Test 3", color: "cyan"},
     {tag: "T3", name: "Test 3", color: "teal"},
 ];
-
-
-
-function DialogController($scope, $mdDialog) {
-    $scope.hide = function() {
-      $mdDialog.hide();
-    };
-
-    $scope.cancel = function() {
-      $mdDialog.cancel();
-    };
-
-    $scope.answer = function(answer) {
-      $mdDialog.hide(answer);
-    };
-}

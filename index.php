@@ -3,18 +3,15 @@
   <head>
       <?php require_once('incl/head.html'); ?>
     </head>
-    <body ng-controller="myController" id="popupContainer" ng-cloak>
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-1 item dialog-demo-content" ng-repeat="item in items" >
-                    <div class="item-head {{item.color}} md-primary md-raised" ng-click="showAdvanced($event)">
-                        <span>{{item.tag}}</span>
-                    </div>
-                    <div class="item-title">
-                        <span class="lead">{{item.name}}</span>
-                    </div>
+    <body ng-controller="myController" ng-cloak>
+        <div class="row" layout="row">
+            <div class="item" ng-repeat="item in items" flex="20">
+                <div class="item-head {{item.color}} md-primary md-raised" ng-click="showDialog($event)">
+                    <span>{{item.tag}}</span>
                 </div>
-
+                <div class="item-title">
+                    <span>{{item.name}}</span>
+                </div>
             </div>
         </div>
 
