@@ -6,7 +6,7 @@
     <body ng-controller="myController" ng-cloak>
         <div class="row" layout="row">
             <div class="item" ng-repeat="item in items" flex="20">
-                <div class="item-head {{item.color}} md-primary md-raised" ng-click="showDialog($event)">
+                <div class="item-head {{item.color}} md-primary md-raised" ng-click="showDialog($event, item.filename)">
                     <span>{{item.tag}}</span>
                 </div>
                 <div class="item-title">
