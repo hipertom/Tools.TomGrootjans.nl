@@ -15,7 +15,7 @@
        $mdDialog.show({
          parent: parentEl,
          targetEvent: $event,
-         templateUrl: 'items/main.temp.html',
+         templateUrl: 'items/maintemplate.html',
          clickOutsideToClose:true,
          escapeToClose: true,
          fullscreen: true, // Only for -xs, -sm breakpoints.
@@ -35,7 +35,7 @@
 })(angular);
 
 var items = [
-    {tag: "T1", name: "Test 1", filename: "test1", color: "red"},
+    {tag: "HC", name: "Hour Counter", filename: "hourcount", color: "red"},
     {tag: "T2", name: "Test 2", filename: "test2", color: "pink"},
     {tag: "T3", name: "Test 3", filename: "test3", color: "purple"},
     {tag: "T4", name: "Test 4", filename: "test4", color: "yellow"},
