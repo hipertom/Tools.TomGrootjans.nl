@@ -3,7 +3,8 @@
 
   angular
    .module('toolsApp', ['ngMaterial'])
-   .controller('myController', AppController);
+   .controller('myController', AppController)
+   .controller('hourcounterController', hourcounterController);
 
   function AppController($scope, $mdDialog) {
 
@@ -32,10 +33,13 @@
       }
     }
   }
+  function hourcounterController($scope) {
+    $scope.times = [9.30,10.00,10.30];
+  }
 })(angular);
 
 var items = [
-    {tag: "HC", name: "Hour Counter", filename: "hourcount", color: "red"},
+    {tag: "HC", name: "Hour Counter", filename: "hourcounter", color: "red"},
     {tag: "T2", name: "Test 2", filename: "test2", color: "pink"},
     {tag: "T3", name: "Test 3", filename: "test3", color: "purple"},
     {tag: "T4", name: "Test 4", filename: "test4", color: "yellow"},
