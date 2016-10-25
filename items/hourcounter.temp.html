@@ -1,7 +1,7 @@
 <div ng-controller="hourcounterController" class="md-dialog-content" id="content">
   <h2>Work hour counter</h2>
   <form class="">
-    <input type="date" name="date">
+    <input type="date" name="date"><br>
     <label for="start">From:</label>
     <select name="startTime">
       <option ng-repeat="time in times" value="{{time | number:2}}">{{time | number:2}}</option>
