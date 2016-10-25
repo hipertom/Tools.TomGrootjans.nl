@@ -10,20 +10,26 @@
     $scope.showDialog = showDialog;
     $scope.items = items;
 
-    function showDialog($event, name) {
+    function showDialog($event, item) {
        var parentEl = angular.element(document.body);
+       item.filename = "items/"+item.filename+".temp.html";
        $mdDialog.show({
          parent: parentEl,
          targetEvent: $event,
-         templateUrl: 'items/'+name+'.temp.html',
+         templateUrl: 'items/main.temp.html',
          clickOutsideToClose:true,
+         escapeToClose: true,
          fullscreen: true, // Only for -xs, -sm breakpoints.
+         locals: {
+           item: item
+       },
          controller: DialogController
       });
-      function DialogController($scope, $mdDialog) {
-        $scope.closeDialog = function() {
-          $mdDialog.hide();
-        }
+      function DialogController($scope, $mdDialog, item) {
+          $scope.item = item;
+          $scope.closeDialog = function() {
+              $mdDialog.hide();
+          }
       }
     }
   }
