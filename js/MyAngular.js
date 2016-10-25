@@ -8,11 +8,10 @@
   function AppController($scope, $mdDialog) {
 
     $scope.showDialog = showDialog;
-    $scope.items = items;
+    $scope.items = filePath(items);
 
     function showDialog($event, item) {
        var parentEl = angular.element(document.body);
-       item.filename = "items/"+item.filename+".temp.html";
        $mdDialog.show({
          parent: parentEl,
          targetEvent: $event,
@@ -46,3 +45,11 @@ var items = [
     {tag: "T8", name: "Test 8", filename: "test8", color: "cyan"},
     {tag: "T9", name: "Test 9", filename: "test9", color: "teal"},
 ];
+
+function filePath(items) {
+  for (var i = 0; i < items.length; i++) {
+    items[i].filename = "items/"+items[i].filename+".temp.html";
+  }
+
+  return items;
+}
