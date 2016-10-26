@@ -2,9 +2,24 @@ body {
     background: #EFEFEF;
     font-family: 'Roboto', sans-serif;
 }
+
 md-toolbar md-icon svg {
-    color: rgba(255,255,255,0.87);
+    color: rgba(255, 255, 255, 0.87);
     fill: currentcolor;
+}
+
+md-list md-list-item md-icon{
+    font-size: 34px;
+    width: 34px;
+    height: 34px;
+}
+
+md-sidenav md-icon svg {
+    fill: currentcolor;
+}
+
+md-list md-list-item div.md-button {
+    padding: 0 5px !important;
 }
 
 .item {
@@ -33,4 +48,9 @@ md-toolbar md-icon svg {
 
 md-card md-card-title {
     padding: 8px 15px;
+}
+
+md-icon.favorite svg {
+    color: #EF5350;
+    fill: currentcolor;
 }

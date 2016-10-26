@@ -9,6 +9,7 @@
     function AppController($scope, $mdDialog, $timeout, $mdSidenav) {
 
         $scope.showDialog = showDialog;
+        $scope.sidebarMenu = sidebarMenu;
         $scope.items = filePath(items);
         $scope.toggleSidebar = function() {
             $mdSidenav('sidebar').toggle();
@@ -45,6 +46,28 @@
         $scope.times = [9.30, 10.00, 10.30];
     }
 })(angular);
+
+var sidebarMenu = [{
+    title: "Favorite",
+    desc: "Wacht all your favored items",
+    svg: "favorite",
+    link: "myitems"
+}, {
+    title: "All Items",
+    desc: "Browse all the available items",
+    svg: "dashboard",
+    link: "myitems"
+}, {
+    title: "Settings",
+    desc: "Wacht all your favorited programs",
+    svg: "settings-gear",
+    link: "myitems"
+}, {
+    title: "My Account",
+    desc: "Wacht all your favorited programs",
+    svg: "account-circle",
+    link: "myitems"
+}];
 
 var items = [{
     tag: "HC",

@@ -32,60 +32,67 @@
                         </md-button>
                     </div>
                 </md-toolbar>
-                <md-content layout-padding>
-                    <p>
-                        This sidenav is locked open on your device. To go back to the default behavior, narrow your display.
-                    </p>
-                </md-content>
-
-            </md-sidenav>
-            <div layout="column" role="main" flex>
-                <md-toolbar class="md-theme-indigo">
-                    <div class="md-toolbar-tools">
-                        <md-button ng-click="toggleSidebar()" class="md-icon-button" aria-label="Open Sidebar"  hide-gt-md>
-                            <md-icon md-svg-icon="img/svg/menu.svg"></md-icon>
-                        </md-button>
-                        <h2>
-                            <span>Toolbar with Disabled/Enabled Icon Buttons</span>
-                        </h2>
-                        <span flex></span>
-                        <md-button class="md-icon-button" aria-label="Favorite">
-                            <md-icon md-svg-icon="img/svg/search.svg" style="color: greenyellow;"></md-icon>
-                        </md-button>
-                        <md-button class="md-icon-button" aria-label="More">
-                            <md-icon md-svg-icon="img/svg/more-vert.svg"></md-icon>
-                        </md-button>
-                    </div>
-                </md-toolbar>
-                <md-content class="md-padding" layout="row" layout-wrap>
-                    <div ng-repeat="item in items" flex-xs="100" flex-sm="50" flex-md="25" flex="20" layout="column">
-                        <md-card class="item">
-                            <div id="head" class="item-head {{item.color}} md-primary md-raised" ng-click="showDialog($event, item)">
-                                <span>{{item.tag}}</span>
+                <md-content>
+                    <md-list flex>
+                        <md-list-item class="md-2-line" ng-repeat="item in sidebarMenu" ng-click="null">
+                            <div class="inset">
+                                <md-icon md-svg-icon="img/svg/{{item.svg}}.svg" ng-class="{true: 'favorite'}[item.svg == 'favorite']"></md-icon>
                             </div>
-                            <md-card-title>
-                                <md-card-title-text>
-                                    <span class="md-headline">{{item.name}}</span>
-                                </md-card-title-text>
-                            </md-card-title>
-                            <md-card-actions layout="row" layout-align="end center">
-                                <md-button class="md-icon-button" aria-label="Favorite">
-                                    <md-icon md-svg-icon="img/svg/favorite.svg"></md-icon>
-                                </md-button>
-                                <md-button class="md-icon-button" aria-label="Settings">
-                                    <md-icon md-svg-icon="img/svg/menu.svg"></md-icon>
-                                </md-button>
-                                <md-button class="md-icon-button" aria-label="Share">
-                                    <md-icon md-svg-icon="img/svg/share.svg"></md-icon>
-                                </md-button>
-                            </md-card-actions>
-                        </md-card>
-                    </div>
-                </md-content>
-            </div>
-        </section>
+                            <div class="md-list-item-text" layout="column">
+                                <h3>{{ item.title }}</h3>
+                                <p>{{ item.desc }}</p>
+                            </div>
+                        </md-list-item>
+                    </md-content>
 
-        <!--<section layout="row" flex>
+                </md-sidenav>
+                <div layout="column" role="main" flex>
+                    <md-toolbar class="md-theme-indigo">
+                        <div class="md-toolbar-tools">
+                            <md-button ng-click="toggleSidebar()" class="md-icon-button" aria-label="Open Sidebar" hide-gt-md>
+                                <md-icon md-svg-icon="img/svg/menu.svg"></md-icon>
+                            </md-button>
+                            <h2>
+                                <span>Toolbar with Disabled/Enabled Icon Buttons</span>
+                            </h2>
+                            <span flex></span>
+                            <md-button class="md-icon-button" aria-label="Favorite">
+                                <md-icon md-svg-icon="img/svg/search.svg" style="color: greenyellow;"></md-icon>
+                            </md-button>
+                            <md-button class="md-icon-button" aria-label="More">
+                                <md-icon md-svg-icon="img/svg/more-vert.svg"></md-icon>
+                            </md-button>
+                        </div>
+                    </md-toolbar>
+                    <md-content class="md-padding" layout="row" layout-wrap>
+                        <div ng-repeat="item in items" flex-xs="100" flex-sm="50" flex-md="25" flex="20" layout="column">
+                            <md-card class="item">
+                                <div id="head" class="item-head {{item.color}} md-primary md-raised" ng-click="showDialog($event, item)">
+                                    <span>{{item.tag}}</span>
+                                </div>
+                                <md-card-title>
+                                    <md-card-title-text>
+                                        <span class="md-headline">{{item.name}}</span>
+                                    </md-card-title-text>
+                                </md-card-title>
+                                <md-card-actions layout="row" layout-align="end center">
+                                    <md-button class="md-icon-button" aria-label="Favorite">
+                                        <md-icon class="favorite" md-svg-icon="img/svg/favorite.svg"></md-icon>
+                                    </md-button>
+                                    <md-button class="md-icon-button" aria-label="Settings">
+                                        <md-icon md-svg-icon="img/svg/menu.svg"></md-icon>
+                                    </md-button>
+                                    <md-button class="md-icon-button" aria-label="Share">
+                                        <md-icon md-svg-icon="img/svg/share.svg"></md-icon>
+                                    </md-button>
+                                </md-card-actions>
+                            </md-card>
+                        </div>
+                    </md-content>
+                </div>
+            </section>
+
+            <!--<section layout="row" flex>
 
 
                     <md-content class="md-padding" layout-xs="column" layout="row" flex layout-wrap>
@@ -115,20 +122,20 @@
                     </md-content>
                 </section>-->
 
-        <!-- Include all compiled plugins (below), or include individual files as needed -->
-        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-        <!-- Angular Material requires Angular.js Libraries -->
-        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
-        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
-        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
-        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
-        <!-- Angular Material Library -->
-        <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
-        <!-- Bootstrap
+            <!-- Include all compiled plugins (below), or include individual files as needed -->
+            <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+            <!-- Angular Material requires Angular.js Libraries -->
+            <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+            <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
+            <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
+            <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
+            <!-- Angular Material Library -->
+            <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
+            <!-- Bootstrap
         <script src="js/bootstrap.min.js"></script>-->
-        <!-- my stuff -->
-        <script src="js/MyAngular.js"></script>
-        <script src="js/MyOnLoad.js"></script>
-    </body>
-</html>
+            <!-- my stuff -->
+            <script src="js/MyAngular.js"></script>
+            <script src="js/MyOnLoad.js"></script>
+        </body>
+    </html>
