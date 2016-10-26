@@ -18,7 +18,7 @@
         $scope.closeSidebar = function() {
             $mdSidenav('sidebar').close();
         }
-        $scope.changeContent = function(view){
+        $scope.changeContent = function(view) {
             $scope.currentContent = view;
         }
 
@@ -48,6 +48,7 @@
 
     function hourcounterController($scope) {
         $scope.times = [9.30, 10.00, 10.30];
+        $scope.worked = worked;
     }
 })(angular);
 
@@ -119,6 +120,50 @@ var items = [{
     filename: "test9",
     color: "teal"
 }, ];
+
+var worked = [{
+    day: "Maandag",
+    date: "7 juni \'16",
+    start: "09:30",
+    end: "17:30",
+    pauze: true
+}, {
+    day: "Dinsdag",
+    date: "26 oktober \'16",
+    start: "09:30",
+    end: "17:30",
+    pauze: false
+}, {
+    day: "Woensdag",
+    date: "31 december \'16",
+    start: "09:30",
+    end: "17:30",
+    pauze: true
+}, {
+    day: "Donderdag",
+    date: "1 januari \'16",
+    start: "16:45",
+    end: "21:00",
+    pauze: false
+}, {
+    day: "Vrijdag",
+    date: "31 februari \'16",
+    start: "12:00",
+    end: "17:00",
+    pauze: true
+}, {
+    day: "Zaterdag",
+    date: "14 maart \'16",
+    start: "09:30",
+    end: "17:30",
+    pauze: true
+}, {
+    day: "Zondag",
+    date: "1 april \'16",
+    start: "99:99",
+    end: "99:99",
+    pauze: false
+}];
 
 function filePath(items) {
     for (var i = 0; i < items.length; i++) {

@@ -54,3 +54,7 @@ md-icon.favorite svg {
     color: #EF5350;
     fill: currentcolor;
 }
+
+md-dialog-content .head{
+    margin: 0 0 10px 0;
+}
