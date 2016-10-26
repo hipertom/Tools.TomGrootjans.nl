@@ -2,6 +2,10 @@ body {
     background: #EFEFEF;
     font-family: 'Roboto', sans-serif;
 }
+md-toolbar md-icon svg {
+    color: rgba(255,255,255,0.87);
+    fill: currentcolor;
+}
 
 .item {
     border-radius: 2px;

@@ -20,51 +20,70 @@
 
     </head>
     <body ng-cloak layout="column" ng-controller="myController">
-<section layout="row" flex>
-    <md-sidenav class="md-sidenav-left" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" md-whiteframe="4">
+        <section layout="row" flex>
+            <md-sidenav md-component-id="sidebar" class="md-sidenav-left" md-is-locked-open="$mdMedia('gt-md')" md-whiteframe="4">
 
-        <md-toolbar class="md-theme-indigo">
-            <h1 class="md-toolbar-tools">Sidenav Left</h1>
-        </md-toolbar>
-        <md-content layout-padding>
-            <p>
-                This sidenav is locked open on your device. To go back to the default behavior, narrow your display.
-            </p>
-        </md-content>
-
-    </md-sidenav>
-    <div layout="column" role="main" flex>
-        <md-toolbar class="md-theme-indigo">
-            <h1 class="md-toolbar-tools">main toolbar</h1>
-        </md-toolbar>
-        <md-content class="md-padding" layout="row" layout-wrap>
-            <div ng-repeat="item in items" flex-xs="100" flex-sm="50" flex-md="25" flex="20" layout="column">
-                <md-card class="item">
-                    <div id="head" class="item-head {{item.color}} md-primary md-raised" ng-click="showDialog($event, item)">
-                        <span>{{item.tag}}</span>
-                    </div>
-                    <md-card-title>
-                        <md-card-title-text>
-                            <span class="md-headline">{{item.name}}</span>
-                        </md-card-title-text>
-                    </md-card-title>
-                    <md-card-actions layout="row" layout-align="end center">
-                        <md-button class="md-icon-button" aria-label="Favorite">
-                            <md-icon md-svg-icon="img/svg/favorite.svg"></md-icon>
+                <md-toolbar class="md-theme-indigo">
+                    <div class="md-toolbar-tools">
+                        <h1>Sidenav Left</h1>
+                        <span flex></span>
+                        <md-button ng-click="closeSidebar()" class="md-icon-button" aria-label="Close" hide-gt-md>
+                            <md-icon md-svg-icon="img/svg/close.svg"></md-icon>
                         </md-button>
-                        <md-button class="md-icon-button" aria-label="Settings">
+                    </div>
+                </md-toolbar>
+                <md-content layout-padding>
+                    <p>
+                        This sidenav is locked open on your device. To go back to the default behavior, narrow your display.
+                    </p>
+                </md-content>
+
+            </md-sidenav>
+            <div layout="column" role="main" flex>
+                <md-toolbar class="md-theme-indigo">
+                    <div class="md-toolbar-tools">
+                        <md-button ng-click="toggleSidebar()" class="md-icon-button" aria-label="Open Sidebar"  hide-gt-md>
                             <md-icon md-svg-icon="img/svg/menu.svg"></md-icon>
                         </md-button>
-                        <md-button class="md-icon-button" aria-label="Share">
-                            <md-icon md-svg-icon="img/svg/share.svg"></md-icon>
+                        <h2>
+                            <span>Toolbar with Disabled/Enabled Icon Buttons</span>
+                        </h2>
+                        <span flex></span>
+                        <md-button class="md-icon-button" aria-label="Favorite">
+                            <md-icon md-svg-icon="img/svg/search.svg" style="color: greenyellow;"></md-icon>
                         </md-button>
-                    </md-card-actions>
-                </md-card>
+                        <md-button class="md-icon-button" aria-label="More">
+                            <md-icon md-svg-icon="img/svg/more-vert.svg"></md-icon>
+                        </md-button>
+                    </div>
+                </md-toolbar>
+                <md-content class="md-padding" layout="row" layout-wrap>
+                    <div ng-repeat="item in items" flex-xs="100" flex-sm="50" flex-md="25" flex="20" layout="column">
+                        <md-card class="item">
+                            <div id="head" class="item-head {{item.color}} md-primary md-raised" ng-click="showDialog($event, item)">
+                                <span>{{item.tag}}</span>
+                            </div>
+                            <md-card-title>
+                                <md-card-title-text>
+                                    <span class="md-headline">{{item.name}}</span>
+                                </md-card-title-text>
+                            </md-card-title>
+                            <md-card-actions layout="row" layout-align="end center">
+                                <md-button class="md-icon-button" aria-label="Favorite">
+                                    <md-icon md-svg-icon="img/svg/favorite.svg"></md-icon>
+                                </md-button>
+                                <md-button class="md-icon-button" aria-label="Settings">
+                                    <md-icon md-svg-icon="img/svg/menu.svg"></md-icon>
+                                </md-button>
+                                <md-button class="md-icon-button" aria-label="Share">
+                                    <md-icon md-svg-icon="img/svg/share.svg"></md-icon>
+                                </md-button>
+                            </md-card-actions>
+                        </md-card>
+                    </div>
+                </md-content>
             </div>
-        </md-content>
-    </div>
-</section>
-
+        </section>
 
         <!--<section layout="row" flex>
 

@@ -6,10 +6,16 @@
         .controller('myController', AppController)
         .controller('hourcounterController', hourcounterController);
 
-    function AppController($scope, $mdDialog) {
+    function AppController($scope, $mdDialog, $timeout, $mdSidenav) {
 
         $scope.showDialog = showDialog;
         $scope.items = filePath(items);
+        $scope.toggleSidebar = function() {
+            $mdSidenav('sidebar').toggle();
+        }
+        $scope.closeSidebar = function() {
+            $mdSidenav('sidebar').close();
+        }
 
         function showDialog($event, item) {
             var parentEl = angular.element(document.body);
