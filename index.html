@@ -19,11 +19,28 @@
         <!--[if lt IE 9]> <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script> <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script> <![endif]-->
 
     </head>
-    <body ng-controller="myController" ng-cloak>
-        <md-content class="md-padding" layout-xs="column" layout="row">
-            <div ng-repeat="item in items" flex-xs flex-gt-xs="100" layout="column">
+    <body ng-cloak layout="column" ng-controller="myController">
+<section layout="row" flex>
+    <md-sidenav class="md-sidenav-left" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" md-whiteframe="4">
+
+        <md-toolbar class="md-theme-indigo">
+            <h1 class="md-toolbar-tools">Sidenav Left</h1>
+        </md-toolbar>
+        <md-content layout-padding>
+            <p>
+                This sidenav is locked open on your device. To go back to the default behavior, narrow your display.
+            </p>
+        </md-content>
+
+    </md-sidenav>
+    <div layout="column" role="main" flex>
+        <md-toolbar class="md-theme-indigo">
+            <h1 class="md-toolbar-tools">main toolbar</h1>
+        </md-toolbar>
+        <md-content class="md-padding" layout="row" layout-wrap>
+            <div ng-repeat="item in items" flex-xs="100" flex-sm="50" flex-md="25" flex="20" layout="column">
                 <md-card class="item">
-                    <div class="item-head {{item.color}} md-primary md-raised" ng-click="showDialog($event, item)">
+                    <div id="head" class="item-head {{item.color}} md-primary md-raised" ng-click="showDialog($event, item)">
                         <span>{{item.tag}}</span>
                     </div>
                     <md-card-title>
@@ -45,6 +62,39 @@
                 </md-card>
             </div>
         </md-content>
+    </div>
+</section>
+
+
+        <!--<section layout="row" flex>
+
+
+                    <md-content class="md-padding" layout-xs="column" layout="row" flex layout-wrap>
+                        <div ng-repeat="item in items" flex="15" layout="column">
+                            <md-card class="item">
+                                <div id="head" class="item-head {{item.color}} md-primary md-raised" ng-click="showDialog($event, item)">
+                                    <span>{{item.tag}}</span>
+                                </div>
+                                <md-card-title>
+                                    <md-card-title-text>
+                                        <span class="md-headline">{{item.name}}</span>
+                                    </md-card-title-text>
+                                </md-card-title>
+                                <md-card-actions layout="row" layout-align="end center">
+                                    <md-button class="md-icon-button" aria-label="Favorite">
+                                        <md-icon md-svg-icon="img/svg/favorite.svg"></md-icon>
+                                    </md-button>
+                                    <md-button class="md-icon-button" aria-label="Settings">
+                                        <md-icon md-svg-icon="img/svg/menu.svg"></md-icon>
+                                    </md-button>
+                                    <md-button class="md-icon-button" aria-label="Share">
+                                        <md-icon md-svg-icon="img/svg/share.svg"></md-icon>
+                                    </md-button>
+                                </md-card-actions>
+                            </md-card>
+                        </div>
+                    </md-content>
+                </section>-->
 
         <!-- Include all compiled plugins (below), or include individual files as needed -->
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -59,8 +109,7 @@
         <!-- Bootstrap
         <script src="js/bootstrap.min.js"></script>-->
         <!-- my stuff -->
-        <script src="js/MyOnLoad.js"></script>
         <script src="js/MyAngular.js"></script>
-
+        <script src="js/MyOnLoad.js"></script>
     </body>
 </html>
