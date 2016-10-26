@@ -34,7 +34,7 @@
                 </md-toolbar>
                 <md-content>
                     <md-list flex>
-                        <md-list-item class="md-2-line" ng-repeat="item in sidebarMenu" ng-click="null">
+                        <md-list-item class="md-2-line" ng-repeat="item in sidebarMenu" ng-click="changeContent(item.link)">
                             <div class="inset">
                                 <md-icon md-svg-icon="img/svg/{{item.svg}}.svg" ng-class="{true: 'favorite'}[item.svg == 'favorite']"></md-icon>
                             </div>
@@ -64,63 +64,12 @@
                             </md-button>
                         </div>
                     </md-toolbar>
-                    <md-content class="md-padding" layout="row" layout-wrap>
-                        <div ng-repeat="item in items" flex-xs="100" flex-sm="50" flex-md="25" flex="20" layout="column">
-                            <md-card class="item">
-                                <div id="head" class="item-head {{item.color}} md-primary md-raised" ng-click="showDialog($event, item)">
-                                    <span>{{item.tag}}</span>
-                                </div>
-                                <md-card-title>
-                                    <md-card-title-text>
-                                        <span class="md-headline">{{item.name}}</span>
-                                    </md-card-title-text>
-                                </md-card-title>
-                                <md-card-actions layout="row" layout-align="end center">
-                                    <md-button class="md-icon-button" aria-label="Favorite">
-                                        <md-icon class="favorite" md-svg-icon="img/svg/favorite.svg"></md-icon>
-                                    </md-button>
-                                    <md-button class="md-icon-button" aria-label="Settings">
-                                        <md-icon md-svg-icon="img/svg/menu.svg"></md-icon>
-                                    </md-button>
-                                    <md-button class="md-icon-button" aria-label="Share">
-                                        <md-icon md-svg-icon="img/svg/share.svg"></md-icon>
-                                    </md-button>
-                                </md-card-actions>
-                            </md-card>
-                        </div>
+
+                    <md-content class="md-padding" layout="row" layout-wrap flex >
+                            <ng-include src="currentContent+'.html'" layout="row" layout-wrap flex></ng-include>
                     </md-content>
                 </div>
             </section>
-
-            <!--<section layout="row" flex>
-
-
-                    <md-content class="md-padding" layout-xs="column" layout="row" flex layout-wrap>
-                        <div ng-repeat="item in items" flex="15" layout="column">
-                            <md-card class="item">
-                                <div id="head" class="item-head {{item.color}} md-primary md-raised" ng-click="showDialog($event, item)">
-                                    <span>{{item.tag}}</span>
-                                </div>
-                                <md-card-title>
-                                    <md-card-title-text>
-                                        <span class="md-headline">{{item.name}}</span>
-                                    </md-card-title-text>
-                                </md-card-title>
-                                <md-card-actions layout="row" layout-align="end center">
-                                    <md-button class="md-icon-button" aria-label="Favorite">
-                                        <md-icon md-svg-icon="img/svg/favorite.svg"></md-icon>
-                                    </md-button>
-                                    <md-button class="md-icon-button" aria-label="Settings">
-                                        <md-icon md-svg-icon="img/svg/menu.svg"></md-icon>
-                                    </md-button>
-                                    <md-button class="md-icon-button" aria-label="Share">
-                                        <md-icon md-svg-icon="img/svg/share.svg"></md-icon>
-                                    </md-button>
-                                </md-card-actions>
-                            </md-card>
-                        </div>
-                    </md-content>
-                </section>-->
 
             <!-- Include all compiled plugins (below), or include individual files as needed -->
             <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

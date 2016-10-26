@@ -10,12 +10,16 @@
 
         $scope.showDialog = showDialog;
         $scope.sidebarMenu = sidebarMenu;
+        $scope.currentContent = 'all';
         $scope.items = filePath(items);
         $scope.toggleSidebar = function() {
             $mdSidenav('sidebar').toggle();
         }
         $scope.closeSidebar = function() {
             $mdSidenav('sidebar').close();
+        }
+        $scope.changeContent = function(view){
+            $scope.currentContent = view;
         }
 
         function showDialog($event, item) {
@@ -51,12 +55,12 @@ var sidebarMenu = [{
     title: "Favorite",
     desc: "Wacht all your favored items",
     svg: "favorite",
-    link: "myitems"
+    link: "favorite"
 }, {
     title: "All Items",
     desc: "Browse all the available items",
     svg: "dashboard",
-    link: "myitems"
+    link: "all"
 }, {
     title: "Settings",
     desc: "Wacht all your favorited programs",
