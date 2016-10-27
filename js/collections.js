@@ -13,7 +13,7 @@ var sidebarMenu = [{
     title: "Settings",
     desc: "Wacht all your favorited programs",
     svg: "settings-gear",
-    link: "myitems"
+    link: "settings"
 }, {
     title: "My Account",
     desc: "Wacht all your favorited programs",

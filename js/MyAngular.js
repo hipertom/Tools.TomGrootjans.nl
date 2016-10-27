@@ -2,7 +2,7 @@
     "use strict";
 
     angular
-        .module('toolsApp', ['ngMaterial', "ngRoute"])
+        .module('toolsApp', ['ngMaterial', 'ngRoute', 'ngAnimate'])
         .controller('myController', AppController)
         .controller('hourcounterController', hourcounterController)
         .config(['$routeProvider', RouteController]);
@@ -51,23 +51,23 @@
             $scope.currentContent = view;
         }
 
-        function showDialog($event, item) {
+        function showDialog($event, filename) {
             var parentEl = angular.element(document.body);
             $mdDialog.show({
                 parent: parentEl,
                 targetEvent: $event,
-                templateUrl: 'items/maintemplate.html',
+                templateUrl: 'dialog/master.html',
                 clickOutsideToClose: true,
                 escapeToClose: true,
                 fullscreen: true, // Only for -xs, -sm breakpoints.
                 locals: {
-                    item: item
+                    filename: filename
                 },
                 controller: DialogController
             });
 
-            function DialogController($scope, $mdDialog, item) {
-                $scope.item = item;
+            function DialogController($scope, $mdDialog, filename) {
+                $scope.filename = filename;
                 $scope.closeDialog = function() {
                     $mdDialog.hide();
                 }
