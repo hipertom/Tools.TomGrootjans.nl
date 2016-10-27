@@ -1,0 +1,35 @@
+<div ng-controller="hourcounterController" class="" layout="column" layout-align="center center" flex>
+    <md-card class="itemcard">
+        <md-card-title>
+            <md-card-title-text>
+                <span class="md-headline">Work hour counter</span>
+            </md-card-title-text>
+        </md-card-title>
+        <md-card-content>
+            <md-list class="md-dense">
+                <md-subheader class="md-primary" aria-label="Pauze">Gewerkte uren</md-subheader>
+                <md-list-item class="secondary-button-padding" ng-repeat="item in worked">
+                    <div class="md-list-item-text" flex="15">
+                        <span>{{item.day}}</span>
+                    </div>
+                    <div class="md-list-item-text" flex="20">
+                        <span>{{item.date}}</span>
+                    </div>
+                    <div class="md-list-item-text" flex="20">
+                        <span>{{item.start}}
+                            -
+                            {{item.end}}</span>
+                    </div>
+                    <md-checkbox disabled ng-model="item.pauze" aria-label="Pauze"></md-checkbox>
+                    <md-button class="md-secondary md-icon-button" ng-click="null" aria-label="Delete">
+                        <md-icon md-svg-icon="img/svg/close.svg"></md-icon>
+                    </md-button>
+                </md-list-item>
+            </md-list>
+        </md-card-content>
+        <md-card-actions layout="row">
+            <md-button class="md-raised" ng-click="goBack()">Go Back</md-button>
+
+        </md-card-actions>
+    </md-card>
+</div>
