@@ -64,7 +64,39 @@ md-dialog-content .head {
     margin: 0 0 10px 0;
 }
 
+.add-hours-dialog md-input-container.myinput {
+    margin-top: 0px;
+    margin-left: 10px;
+}
+.add-hours-dialog .first-input-container {
+    margin-top: 12px;
+}
+.add-hours-dialog .checkbox-input-container{
+    padding-left: 15px;
+}
+.add-hours-dialog .checkbox-input-container span{
+    margin-left: 19px;
+        color: rgba(0,0,0,0.38);
+}
+.add-hours-dialog svg,
+.add-hours-dialog md-checkbox{
+        color: rgba(0,0,0,0.60);
+        fill: currentcolor;
+}
 
+.hour-fab{
+    background-color: rgb(255,82,82) !important;
+    color: rgb(255,255,255);
+    position: absolute;
+    top: 30px;
+    left: auto;
+    right: 15px;
+
+    z-index: 9999;
+}
+.hour-fab svg{
+    fill: currentcolor;
+}
 
 button.cardcontrols svg {
     color: white;

@@ -5,6 +5,7 @@
         .module('toolsApp', ['ngMaterial', 'ngRoute', 'ngAnimate'])
         .controller('myController', AppController)
         .controller('hourcounterController', hourcounterController)
+        .controller('addHoursController', addHoursController)
         .config(['$routeProvider', RouteController]);
 
     function RouteController($routeProvider) {
@@ -51,7 +52,7 @@
             $scope.currentContent = view;
         }
 
-        function showDialog($event, filename) {
+        function showDialog($event, title, filename) {
             var parentEl = angular.element(document.body);
             $mdDialog.show({
                 parent: parentEl,
@@ -61,12 +62,14 @@
                 escapeToClose: true,
                 fullscreen: true, // Only for -xs, -sm breakpoints.
                 locals: {
+                    title: title,
                     filename: filename
                 },
                 controller: DialogController
             });
 
-            function DialogController($scope, $mdDialog, filename) {
+            function DialogController($scope, $mdDialog, title, filename) {
+                $scope.title = title;
                 $scope.filename = filename;
                 $scope.closeDialog = function() {
                     $mdDialog.hide();
@@ -76,8 +79,11 @@
     }
 
     function hourcounterController($scope) {
-        $scope.times = [9.30, 10.00, 10.30];
         $scope.worked = worked;
+    }
+
+    function addHoursController($scope) {
+        $scope.times = [9.30, 10.00, 10.30];
     }
 })(angular);
 

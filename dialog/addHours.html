@@ -1,1 +1,43 @@
-foo
+<md-button class="md-fab hour-fab" aria-label="Eat cake">
+    <md-icon md-svg-src="img/svg/save.svg"></md-icon>
+</md-button>
+<div ng-controller="addHoursController" class="md-dialog-content add-hours-dialog">
+    <div layout-gt-sm="column">
+        <md-datepicker md-placeholder="Date" ng-model="myDate" md-open-on-focus></md-datepicker>
+        <br>
+        <div layout="row" class="first-input-container">
+            <md-button class="md-icon-button" aria-label="Start time">
+                <md-icon md-svg-icon="img/svg/timer.svg"></md-icon>
+            </md-button>
+            <md-input-container class="myinput">
+                <label>Start time</label>
+                <md-select ng-model="user.state">
+                    <md-option ng-repeat="time in times" value="{{time}}">
+                        {{time}}
+                    </md-option>
+                </md-select>
+            </md-input-container>
+        </div>
+        <br>
+        <div layout="row">
+            <md-button class="md-icon-button" aria-label="End time">
+                <md-icon md-svg-icon="img/svg/timer-off.svg"></md-icon>
+            </md-button>
+            <md-input-container class="myinput">
+                <label>End time</label>
+                <md-select ng-model="user.state">
+                    <md-option ng-repeat="time in times" value="{{time}}">
+                        {{time}}
+                    </md-option>
+                </md-select>
+            </md-input-container>
+        </div>
+        <div layout="row" class="checkbox-input-container">
+            <md-input-container>
+                <md-checkbox ng-model="data.cb1" aria-label="Pauze">
+                    Pauze
+                </md-checkbox>
+            </md-input-container>
+        </div>
+    </div>
+</div>
