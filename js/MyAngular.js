@@ -83,7 +83,8 @@
     }
 
     function addHoursController($scope) {
-        $scope.times = [9.30, 10.00, 10.30];
+        $scope.startTimes = ["09:30", "12:00", "17:00"];
+        $scope.endTimes = ["17:00", "17:30", "21:00"];
     }
 })(angular);
 

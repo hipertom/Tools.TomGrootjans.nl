@@ -78,6 +78,9 @@ md-dialog-content .head {
     margin-left: 19px;
         color: rgba(0,0,0,0.38);
 }
+.add-hours-dialog .checkbox-input-container md-input-container{
+    margin-bottom: 0;
+}
 .add-hours-dialog svg,
 .add-hours-dialog md-checkbox{
         color: rgba(0,0,0,0.60);
