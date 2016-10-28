@@ -1,8 +1,7 @@
 <section layout="row" layout-wrap layout-align="start start">
-    <div ng-repeat="item in items" flex-xs="100" flex-sm="50" flex-md="25" flex="20">
-        <!--<a href="#/item/hourcounter">-->
+    <div ng-repeat="item in favorite" flex-xs="100" flex-sm="50" flex-md="25" flex="20">
+        <a href="#/item/hourcounter">
             <md-card class="item">
-                <a href="#/item/hourcounter">
                 <div id="head" class="item-head {{item.color}} md-primary md-raised">
                     <span>{{item.tag}}</span>
                 </div>
@@ -11,9 +10,8 @@
                         <span class="md-headline">{{item.name}}</span>
                     </md-card-title-text>
                 </md-card-title>
-                </a>
-                <md-card-actions layout="row" layout-align="center center">
-                    <md-button class="md-icon-button" aria-label="Favorite" ng-click="addFav(item)">
+                <md-card-actions layout="row" layout-align="end center">
+                    <md-button class="md-icon-button" aria-label="Favorite">
                         <md-icon class="favorite" md-svg-icon="img/svg/favorite.svg"></md-icon>
                     </md-button>
                     <md-button class="md-icon-button" aria-label="Settings">
@@ -24,6 +22,6 @@
                     </md-button>
                 </md-card-actions>
             </md-card>
-        <!--</a>-->
+        </a>
     </div>
 </section>

@@ -42,15 +42,27 @@
         $scope.sidebarMenu = sidebarMenu;
         $scope.currentContent = 'all';
         $scope.items = items;
+        $scope.favorite = [];
+        $scope.addFav = function(item) {
+            if ($.inArray(item, $scope.favorite)) {
+                console.log("item is in");
+                $scope.favorite = $.grep($scope.favorite, function(n) {
+                    return (n !== item);
+                });
+            } else {
+                console.log("added item");
+                $scope.favorite.push(item);
+            }
+        };
         $scope.toggleSidebar = function() {
             $mdSidenav('sidebar').toggle();
-        }
+        };
         $scope.closeSidebar = function() {
             $mdSidenav('sidebar').close();
-        }
+        };
         $scope.changeContent = function(view) {
             $scope.currentContent = view;
-        }
+        };
 
         function showDialog($event, title, filename) {
             var parentEl = angular.element(document.body);

@@ -22,46 +22,55 @@ var sidebarMenu = [{
 }];
 
 var items = [{
+    id: 1,
     tag: "HC",
     name: "Hour Counter",
     filename: "hourcounter",
     color: "red"
 }, {
+    id: 2,
     tag: "T2",
     name: "Test 2",
     filename: "test2",
     color: "pink"
 }, {
+    id: 3,
     tag: "T3",
     name: "Test 3",
     filename: "test3",
     color: "purple"
 }, {
+    id: 4,
     tag: "T4",
     name: "Test 4",
     filename: "test4",
     color: "yellow"
 }, {
+    id: 5,
     tag: "T5",
     name: "Test 5",
     filename: "test5",
     color: "lime"
 }, {
+    id: 6,
     tag: "T6",
     name: "Test 6",
     filename: "test6",
     color: "orange"
 }, {
+    id: 7,
     tag: "T7",
     name: "Test 7",
     filename: "test7",
     color: "blue"
 }, {
+    id: 8,
     tag: "T8",
     name: "Test 8",
     filename: "test8",
     color: "cyan"
 }, {
+    id: 9,
     tag: "T9",
     name: "Test 9",
     filename: "test9",
