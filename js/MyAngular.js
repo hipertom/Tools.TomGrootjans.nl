@@ -40,14 +40,19 @@
             window.history.back();
         };
 
-        xhReq.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-              $scope.sidebarMenu = JSON.parse(xhReq.responseText);
-            }
-          };
+        sidebarJson.onload = function() {
+            $scope.sidebarMenu = JSON.parse(this.responseText);
+        };
+
+        tilesJson.onload = function() {
+            $scope.items = JSON.parse(this.responseText);
+        };
+
+        tempJson.onload = function() {
+            $scope.worked = JSON.parse(this.responseText);
+        };
 
         $scope.currentContent = 'all';
-        $scope.items = items;
         $scope.favorite = [];
         $scope.addFav = function(item) {
             if ($.inArray(item, $scope.favorite)) {
@@ -97,7 +102,7 @@
     }
 
     function hourcounterController($scope) {
-        $scope.worked = worked;
+
     }
 
     function addHoursController($scope) {
