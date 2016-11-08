@@ -1,0 +1,23 @@
+[
+    {
+    "title": "Favorite",
+    "desc": "Wacht all your favored items",
+    "svg": "favorite",
+    "link": "favorite"
+}, {
+    "title": "All Items",
+    "desc": "Browse all the available items",
+    "svg": "dashboard",
+    "link": "all"
+}, {
+    "title": "Settings",
+    "desc": "Wacht all your favorited programs",
+    "svg": "settings-gear",
+    "link": "settings"
+}, {
+    "title": "My Account",
+    "desc": "Wacht all your favorited programs",
+    "svg": "account-circle",
+    "link": "myitems"
+}
+]
