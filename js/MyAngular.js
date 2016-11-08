@@ -33,24 +33,25 @@
             });
     }
 
-    function AppController($scope, $mdDialog, $timeout, $mdSidenav) {
+    function AppController($scope, $mdDialog, $timeout, $mdSidenav, $http) {
 
         $scope.showDialog = showDialog;
         $scope.goBack = function() {
             window.history.back();
         };
 
-        sidebarJson.onload = function() {
-            $scope.sidebarMenu = JSON.parse(this.responseText);
-        };
+        $http.get(sidebarURL)
+            .then(function(response) {
+                $scope.sidebarMenu = response.data;
+            });
+        $http.get(tilesURL)
+            .then(function(response) {
+                $scope.items = response.data;
+            });
 
-        tilesJson.onload = function() {
-            $scope.items = JSON.parse(this.responseText);
-        };
+        // $scope.sidebarMenu = ajaxGet(sidebarURL);
+        // $scope.items = ajaxGet(tilesURL);
 
-        tempJson.onload = function() {
-            $scope.worked = JSON.parse(this.responseText);
-        };
 
         $scope.currentContent = 'all';
         $scope.favorite = [];
@@ -94,6 +95,7 @@
             function DialogController($scope, $mdDialog, title, filename) {
                 $scope.title = title;
                 $scope.filename = filename;
+
                 $scope.closeDialog = function() {
                     $mdDialog.hide();
                 }
@@ -101,13 +103,64 @@
         }
     }
 
-    function hourcounterController($scope) {
-
+    function hourcounterController($scope, $http) {
+        $http.get(tempURL)
+            .then(function(response) {
+                $scope.worked = response.data;
+            });
     }
 
-    function addHoursController($scope) {
+    function addHoursController($scope, $http, $mdDialog, $route) {
         $scope.startTimes = ["09:30", "12:00", "17:00"];
         $scope.endTimes = ["17:00", "17:30", "21:00"];
+        var weekday = new Array(7);
+        weekday[0] = "Zondag";
+        weekday[1] = "Maandag";
+        weekday[2] = "Disndag";
+        weekday[3] = "Woensdag";
+        weekday[4] = "Donderdag";
+        weekday[5] = "Vrijdag";
+        weekday[6] = "Zaterdag";
+
+        $scope.saveHours = function() {
+            var data = $scope.FormData;
+
+            var tempObj = {
+                day: data.date.getDay(),
+                day: data.date.getDate(),
+                month: data.date.getMonth(),
+                year: data.date.getFullYear(),
+                start: data.start,
+                end: data.end,
+                pauze: data.pauze
+            };
+
+            console.log(tempObj);
+
+            $http({
+                    method: 'PUT',
+                    url: "save.php",
+                    data: tempObj,
+                    headers: {
+                        'Content-Type': 'application/json; charset=utf-8'
+                    }
+                })
+                .then(
+                    function(response) {
+                        console.log("statusText: " + response.statusText);
+                    },
+                    function(response) {
+                        console.log("Failed: " + response);
+                    }
+                );
+            $route.reload();
+            setTimeout(
+                function() {
+                    $mdDialog.hide();
+                }, 300);
+        };
+
+
     }
 })(angular);
 
