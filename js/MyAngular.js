@@ -39,7 +39,13 @@
         $scope.goBack = function() {
             window.history.back();
         };
-        $scope.sidebarMenu = sidebarMenu;
+
+        xhReq.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+              $scope.sidebarMenu = JSON.parse(xhReq.responseText);
+            }
+          };
+
         $scope.currentContent = 'all';
         $scope.items = items;
         $scope.favorite = [];
