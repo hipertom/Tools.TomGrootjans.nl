@@ -6,7 +6,50 @@
         .controller('myController', AppController)
         .controller('hourcounterController', hourcounterController)
         .controller('addHoursController', addHoursController)
+        .service('workedService', workedServiceFun)
         .config(['$routeProvider', RouteController]);
+
+    function workedServiceFun($http) {
+        this.items = [];
+        this.GetItems = function(cb) {
+            var self = this;
+            $http.get(tempURL)
+                .then(
+                    function(response) { // correct
+                        console.log(response);
+                        self.items = response.data;
+                        return cb(null, response.data);
+                    },
+                    function(response) { // error
+                        return cb(response.status, null);
+                    });
+            return self;
+        }
+
+        this.AddItem = function(obj, cb) {
+            var self = this;
+            $http({
+                    method: 'POST',
+                    url: "save.php",
+                    data: obj,
+                    headers: {
+                        'Content-Type': 'application/json; charset=utf-8'
+                    }
+                })
+                .then(
+                    function(response) { // correct
+                        console.log("statusText: " + response.statusText);
+                        self.items.push(obj);
+                        cb(null, obj);
+                    },
+                    function(response) { // error
+                        console.log("Failed: " + response);
+                        cb(response.status, null)
+                    }
+                );
+            return self;
+        }
+    }
 
     function RouteController($routeProvider) {
         $routeProvider
@@ -103,14 +146,14 @@
         }
     }
 
-    function hourcounterController($scope, $http) {
-        $http.get(tempURL)
-            .then(function(response) {
-                $scope.worked = response.data;
-            });
+    function hourcounterController($scope, $http, workedService) {
+        workedService.GetItems(function(err, result) {
+            if (err) throw err;
+            $scope.worked = result;
+        });
     }
 
-    function addHoursController($scope, $http, $mdDialog, $route) {
+    function addHoursController($scope, $http, $mdDialog, $route, workedService) {
         $scope.startTimes = ["09:30", "12:00", "17:00"];
         $scope.endTimes = ["17:00", "17:30", "21:00"];
         var weekday = new Array(7);
@@ -135,29 +178,10 @@
                 pauze: data.pauze
             };
 
-            console.log(tempObj);
-
-            $http({
-                    method: 'PUT',
-                    url: "save.php",
-                    data: tempObj,
-                    headers: {
-                        'Content-Type': 'application/json; charset=utf-8'
-                    }
-                })
-                .then(
-                    function(response) {
-                        console.log("statusText: " + response.statusText);
-                    },
-                    function(response) {
-                        console.log("Failed: " + response);
-                    }
-                );
-            $route.reload();
-            setTimeout(
-                function() {
-                    $mdDialog.hide();
-                }, 300);
+            workedService.AddItem(tempObj, function (err, result) {
+                console.log(result);
+            })
+            $mdDialog.hide();
         };
 
 
