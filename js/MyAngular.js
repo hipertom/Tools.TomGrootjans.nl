@@ -170,7 +170,7 @@
 
             var tempObj = {
                 day: data.date.getDay(),
-                day: data.date.getDate(),
+                date: data.date.getDate(),
                 month: data.date.getMonth(),
                 year: data.date.getFullYear(),
                 start: data.start,
