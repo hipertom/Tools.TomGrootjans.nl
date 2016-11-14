@@ -1,33 +1,65 @@
-function AddHoursController($scope, $http, $mdDialog, $route, workedService) {
-        $scope.startTimes = ["09:30", "12:00", "17:00"];
-        $scope.endTimes = ["17:00", "17:30", "21:00"];
-        var weekday = new Array(7);
-        weekday[0] = "Zondag";
-        weekday[1] = "Maandag";
-        weekday[2] = "Disndag";
-        weekday[3] = "Woensdag";
-        weekday[4] = "Donderdag";
-        weekday[5] = "Vrijdag";
-        weekday[6] = "Zaterdag";
+function WorkedServiceFun($http) {
+    this.items = [];
 
-        $scope.saveHours = function() {
-            var data = $scope.FormData;
+    this.GetItems = function (cb) {
+        var self = this;
+        $http.get(tempURL)
+            .then(
+                function (response) { // correct
+                    self.items = response.data;
+                    return cb(null, response.data);
+                },
+                function (response) { // error
+                    console.log("Failed: " + response);
+                    return cb(response.status, null);
+                });
+        return self;
+    }
 
-            var tempObj = {
-                day: data.date.getDay(),
-                date: data.date.getDate(),
-                month: data.date.getMonth(),
-                year: data.date.getFullYear(),
-                start: data.start,
-                end: data.end,
-                pauze: data.pauze
-            };
-
-            workedService.AddItem(tempObj, function (err, result) {
-                console.log(result);
+    this.AddItem = function (obj, cb) {
+        var self = this;
+        $http({
+                method: 'POST',
+                url: "save.php",
+                data: obj,
+                headers: {
+                    'Content-Type': 'application/json; charset=utf-8'
+                }
             })
-            $mdDialog.hide();
+            .then(
+                function (response) { // correct
+                    self.items.push(obj);
+                    cb(null, obj);
+                },
+                function (response) { // error
+                    console.log("Failed: " + response);
+                    cb(response.status, null)
+                }
+            );
+        return self;
+    }
+}
+
+function AddHoursController($scope, $http, $mdDialog, $route, workedService) {
+    $scope.startTimes = ["09:30", "12:00", "17:00"];
+    $scope.endTimes = ["17:00", "17:30", "21:00"];
+
+    $scope.saveHours = function () {
+        var data = $scope.FormData;
+
+        var tempObj = {
+            day: data.date.getDay(),
+            date: data.date.getDate(),
+            month: data.date.getMonth(),
+            year: data.date.getFullYear(),
+            start: data.start,
+            end: data.end,
+            pauze: data.pauze
         };
 
-
-    }
+        workedService.AddItem(tempObj, function (err, result) {
+            console.log(result);
+        })
+        $mdDialog.hide();
+    };
+}

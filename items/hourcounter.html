@@ -8,11 +8,11 @@
         <md-list class="md-dense">
             <md-subheader class="md-primary" aria-label="Pauze">Gewerkte uren</md-subheader>
             <md-list-item class="secondary-button-padding" ng-repeat="item in worked">
-                <div class="md-list-item-text" flex="15">
-                    <span>{{item.day}}</span>
+                <div class="md-list-item-text" flex="10">
+                    <span ng-init="day = weekdays[item.day]">{{day}}</span>
                 </div>
-                <div class="md-list-item-text" flex="20">
-                    <span>{{item.date}}</span>
+                <div class="md-list-item-text" flex="10" ng-init="month = (months[item.month] | limitTo: 3); year = '\'' + (item.year - 2000)">
+                    <span>{{item.date}} {{month}} {{year}}</span>
                 </div>
                 <div class="md-list-item-text" flex="20">
                     <span>{{item.start}}
