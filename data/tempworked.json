@@ -1,0 +1,10 @@
+[{
+    "id": 1479224359933,
+    "day": 1,
+    "date": 10,
+    "month": 9,
+    "year": 2016,
+    "start": "09:30",
+    "end": "17:30",
+    "pauze": true
+},{"id":1479224449679,"day":1,"date":17,"month":9,"year":2016,"start":"17:00","end":"21:00","pauze":false},{"id":1479224575779,"day":2,"date":18,"month":9,"year":2016,"start":"09:30","end":"17:30","pauze":true}]

@@ -60,31 +60,34 @@ md-icon.favorite svg {
     fill: currentcolor;
 }
 
+
+/**** Dialog ****/
 md-dialog-content .head {
     margin: 0 0 10px 0;
 }
 
-.add-hours-dialog md-input-container.myinput {
-    margin-top: 0px;
-    margin-left: 10px;
+md-dialog-content .form-contents {
+    margin-top: 10px;
 }
-.add-hours-dialog .first-input-container {
-    margin-top: 12px;
+
+md-dialog-content md-input-container {
+    margin: 14px 0 24px 0;
 }
-.add-hours-dialog .checkbox-input-container{
-    padding-left: 15px;
+
+md-dialog-content md-input-container.datepicker {
+    margin: 14px 0 14px 0;
+    padding: 0 6px 0 0;
 }
-.add-hours-dialog .checkbox-input-container span{
-    margin-left: 19px;
-        color: rgba(0,0,0,0.38);
+
+.md-datepicker-input-container {
+    width: 100%;
 }
-.add-hours-dialog .checkbox-input-container md-input-container{
-    margin-bottom: 0;
+md-input-container:after {
+    content: none;
 }
-.add-hours-dialog svg,
-.add-hours-dialog md-checkbox{
-        color: rgba(0,0,0,0.60);
-        fill: currentcolor;
+
+.md-errors-spacer {
+    display: none;
 }
 
 .hour-fab{

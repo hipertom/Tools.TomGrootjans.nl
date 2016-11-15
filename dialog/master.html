@@ -1,15 +1,12 @@
 <md-dialog aria-label="{{title}}" flex="20">
-    <form ng-cloak>
         <md-toolbar style="position: absolute;">
             <div class="md-toolbar-tools">
                 <h2>{{title}}</h2>
                 <span flex></span>
-
             </div>
         </md-toolbar>
 
         <md-dialog-content style="padding-top: 64px;">
             <ng-include src="'dialog/'+filename+'.html'"></ng-include>
         </md-dialog-content>
-    </form>
 </md-dialog>

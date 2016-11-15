@@ -1,43 +1,40 @@
 <div ng-controller="addHoursController as ctrl" class="md-dialog-content add-hours-dialog">
     <div layout-gt-sm="column">
-        <form class="">
-            <md-datepicker md-placeholder="Date" ng-model="FormData.date" ng-required="true" md-open-on-focus></md-datepicker>
-            <br>
-            <div layout="row" class="first-input-container">
-                <md-button class="md-icon-button" aria-label="Start time">
-                    <md-icon md-svg-icon="img/svg/timer.svg"></md-icon>
-                </md-button>
-                <md-input-container class="myinput">
-                    <label>Start time</label>
-                    <md-select ng-model="FormData.start" ng-required="true">
-                        <md-option ng-repeat="time in startTimes" value="{{time}}">
-                            {{time}}
-                        </md-option>
-                    </md-select>
+        <form name="myForm" class="" ng-submit="myForm.$valid && submit(formContent)" novalidate>
+            <div class="form-contents" flex layout="column">
+                <md-input-container class="datepicker">
+                    <label>Select date</label>
+                    <md-datepicker ng-model="formContent.date" ng-required="true" md-open-on-focus md-hide-icons="calendar"></md-datepicker>
                 </md-input-container>
-            </div>
-            <br>
-            <div layout="row">
-                <md-button class="md-icon-button" aria-label="End time">
-                    <md-icon md-svg-icon="img/svg/timer-off.svg"></md-icon>
-                </md-button>
-                <md-input-container class="myinput">
-                    <label>End time</label>
-                    <md-select ng-model="FormData.end">
-                        <md-option ng-repeat="time in endTimes" value="{{time}}">
-                            {{time}}
-                        </md-option>
-                    </md-select>
-                </md-input-container>
-            </div>
-            <div layout="row" class="checkbox-input-container">
                 <md-input-container>
-                    <md-checkbox ng-model="FormData.pauze" aria-label="Pauze">
-                        Pauze
-                    </md-checkbox>
+                    <label>Start time</label>
+                    <md-select ng-model="formContent.start" ng-required="true">
+                        <md-option ng-repeat="time in startTimes" ng-value="time">
+                            {{time}}
+                        </md-option>
+                    </md-select>
+                </md-input-container>
+                <md-input-container>
+                    <label>End time</label>
+                    <md-select ng-model="formContent.end" ng-required="true" >
+                        <md-option ng-repeat="time in endTimes" ng-value="time">
+                            {{time}}
+                        </md-option>
+                    </md-select>
+                </md-input-container>
+                <md-input-container>
+                    <label>Pauze</label>
+                    <md-select ng-model="formContent.pauze" ng-required="true">
+                        <md-option ng-value="true" >
+                            Yes
+                        </md-option>
+                        <md-option ng-value="false">
+                            No
+                        </md-option>
+                    </md-select>
                 </md-input-container>
             </div>
-            <md-button class="md-fab hour-fab" aria-label="Eat cake" ng-click="saveHours()">
+            <md-button class="md-fab hour-fab" aria-label="Save" type="submit">
                 <md-icon md-svg-src="img/svg/save.svg"></md-icon>
             </md-button>
         </form>

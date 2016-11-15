@@ -1,3 +1,33 @@
+function AddHoursController($scope, $http, $mdDialog, $route, workedService) {
+    if (!Date.now) {
+        Date.now = function () {
+            return new Date().getTime();
+        }
+    }
+
+    $scope.submit = function (data) {
+        var obj = {
+            id: Date.now(),
+            day: data.date.getDay(),
+            date: data.date.getDate(),
+            month: data.date.getMonth(),
+            year: data.date.getFullYear(),
+            start: data.start,
+            end: data.end,
+            pauze: data.pauze
+        };
+
+        workedService.AddItem(obj, function (err, result) {
+            console.log(result);
+        })
+        $mdDialog.hide();
+    }
+
+    $scope.startTimes = ["09:30", "12:00", "17:00"];
+    $scope.endTimes = ["17:00", "17:30", "21:00"];
+
+}
+
 function WorkedServiceFun($http) {
     this.items = [];
 
@@ -40,33 +70,8 @@ function WorkedServiceFun($http) {
     }
 }
 
-function AddHoursController($scope, $http, $mdDialog, $route, workedService) {
-    if (!Date.now) {
-        Date.now = function () {
-            return new Date().getTime();
-        }
-    }
 
-    $scope.startTimes = ["09:30", "12:00", "17:00"];
-    $scope.endTimes = ["17:00", "17:30", "21:00"];
 
-    $scope.saveHours = function () {
-        var data = $scope.FormData;
-
-        var tempObj = {
-            id: Date.now(),
-            day: data.date.getDay(),
-            date: data.date.getDate(),
-            month: data.date.getMonth(),
-            year: data.date.getFullYear(),
-            start: data.start,
-            end: data.end,
-            pauze: data.pauze
-        };
-        
-        workedService.AddItem(tempObj, function (err, result) {
-            console.log(result);
-        })
-        $mdDialog.hide();
-    };
+function datepickerConfig($mdDateLocaleProvider) {
+    $mdDateLocaleProvider.firstDayOfWeek = 1;
 }
