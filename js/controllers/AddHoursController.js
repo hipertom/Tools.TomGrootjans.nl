@@ -1,9 +1,20 @@
 function AddHoursController($scope, $http, $mdDialog, $route, workedService) {
+    // vars
     if (!Date.now) {
         Date.now = function () {
             return new Date().getTime();
         }
     }
+    var startTimes = ["09:30", "12:00", "17:00"];
+    var endTimes = ["17:00", "17:30", "21:00"];
+
+    // scopes
+
+    $scope.formContent = { // default values for form
+        start: startTimes[0],
+        end: endTimes[1],
+        pauze: "true"
+    };
 
     $scope.submit = function (data) {
         var obj = {
@@ -21,8 +32,8 @@ function AddHoursController($scope, $http, $mdDialog, $route, workedService) {
         $mdDialog.hide();
     }
 
-    $scope.startTimes = ["09:30", "12:00", "17:00"];
-    $scope.endTimes = ["17:00", "17:30", "21:00"];
+    $scope.startTimes = startTimes;
+    $scope.endTimes = endTimes;
 
 }
 
