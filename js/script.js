@@ -1,5 +1,5 @@
 /****** Change ****/
-var onServer = true;
+var onServer = false;
 /******************/
 var mainURL = (!onServer)? "http://127.0.0.1/edsa-Tools.TomGrootjans.nl": "";
 var sidebarURL = mainURL + "/data/sidebar.json";
