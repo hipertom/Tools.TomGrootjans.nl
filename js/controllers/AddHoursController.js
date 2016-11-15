@@ -17,9 +17,7 @@ function AddHoursController($scope, $http, $mdDialog, $route, workedService) {
             pauze: data.pauze
         };
 
-        workedService.AddItem(obj, function (err, result) {
-            console.log(result);
-        })
+        workedService.addItem(obj);
         $mdDialog.hide();
     }
 
@@ -29,7 +27,7 @@ function AddHoursController($scope, $http, $mdDialog, $route, workedService) {
 }
 
 function WorkedServiceFun($http) {
-    this.items = [];
+    this.items = new Array();
 
     this.GetItems = function (cb) {
         var self = this;
@@ -46,7 +44,36 @@ function WorkedServiceFun($http) {
         return self;
     }
 
-    this.AddItem = function (obj, cb) {
+    this.addItem = function (obj) {
+        this.items.push(obj);
+
+        var myJsonString = angular.toJson(this.items);
+        this.updateJson(myJsonString, function (err, result) {
+            if (err) throw err;
+        });
+    }
+
+    this.removeItem = function (id) {
+        var temp = this.items;
+        var itemID = id;
+
+        $.each(temp, function (i) {
+            if (temp[i].id === itemID) {
+                console.log("Removing: " + temp[i].id);
+                temp.splice(i, 1);
+                return false;
+            }
+        });
+        this.items = temp;
+
+        var myJsonString = angular.toJson(this.items);
+        this.updateJson(myJsonString, function (err, result) {
+            if (err) throw err;
+        });
+    }
+
+
+    this.updateJson = function (obj, cb) {
         var self = this;
         $http({
                 method: 'POST',
@@ -58,7 +85,6 @@ function WorkedServiceFun($http) {
             })
             .then(
                 function (response) { // correct
-                    self.items.push(obj);
                     cb(null, obj);
                 },
                 function (response) { // error
