@@ -19,56 +19,36 @@ function WorkedServiceFun($http) {
     }
 
     this.addItem = function (obj) {
-        this.items.push(obj);
-        this.items.sort(SortOnDate);
 
-        var myJsonString = angular.toJson(this.items);
-        this.updateJson(myJsonString, function (err, result) {
-            if (err) throw err;
-        });
+
+        $http.post(tempURL, obj).then(
+            response => {
+                Object.assign(obj, {
+                    id: parseInt(response.data, 10)
+                });
+                this.items.push(obj);
+                this.items.sort(SortOnDate);
+                
+            },
+            err => console.log(err)
+        );
     }
 
     this.removeItem = function (id) {
-        var temp = this.items;
-        var itemID = id;
 
-        $.each(temp, function (i) {
-            if (temp[i].id === itemID) {
-                console.log("Removing: " + temp[i].id);
-                temp.splice(i, 1);
-                return false;
-            }
-        });
-        this.items = temp;
+        const deletion = $http.delete(`${tempURL}/${id}`).then(
+            response => {
+                this.items.forEach((item, index) => {
+                    if (item.id === id) {
+                        this.items.splice(index, 1);
+                    }
+                });
+            },
+            err => console.log(err)
+        );
 
-        var myJsonString = angular.toJson(this.items);
-        this.updateJson(myJsonString, function (err, result) {
-            if (err) throw err;
-        });
     }
 
-
-    this.updateJson = function (obj, cb) {
-        var self = this;
-        $http({
-                method: 'POST',
-                url: "save.php",
-                data: obj,
-                headers: {
-                    'Content-Type': 'application/json; charset=utf-8'
-                }
-            })
-            .then(
-                function (response) { // correct
-                    cb(null, obj);
-                },
-                function (response) { // error
-                    console.log("Failed: " + response);
-                    cb(response.status, null)
-                }
-            );
-        return self;
-    }
 }
 
 function SortOnDate(a, b) {

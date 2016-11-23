@@ -6,25 +6,23 @@
     </md-card-title>
     <md-card-content>
         <md-list class="md-dense">
-            <!--ToDo
+            <!-- ToDo
                 * Month overview in header
                 * hours per month
                 * Money per month 
                 * etc
                 
             -->
-            <md-subheader class="md-primary" aria-label="Pauze">Gewerkte uren</md-subheader>
+            <md-subheader class="md-primary" aria-label="Pauze" >hours</md-subheader>
             <md-list-item class="secondary-button-padding" ng-repeat="item in worked">
                 <div class="md-list-item-text" flex="10">
                     <span ng-init="day = weekdays[item.day]">{{day}}</span>
                 </div>
-                <div class="md-list-item-text" flex="10" ng-init="month = (months[item.month] | limitTo: 3); year = '\'' + (item.year - 2000)">
-                    <span>{{item.date}} {{month}} {{year}}</span>
+                <div class="md-list-item-text" flex="10" ng-init="monthShort = (months[item.month] | limitTo: 3); year = '\'' + (item.year - 2000)">
+                    <span>{{item.date}} {{monthShort}} {{year}}</span>
                 </div>
                 <div class="md-list-item-text" flex="20">
-                    <span>{{item.start}}
-                        -
-                        {{item.end}}</span>
+                    <span>{{item.start}} - {{item.end}}</span>
                 </div>
                 <md-checkbox disabled ng-model="item.pauze" aria-label="Pauze"></md-checkbox>
                 <md-button class="md-secondary md-icon-button" ng-click="removeItem(item.id)" aria-label="Delete">
