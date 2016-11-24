@@ -2,7 +2,10 @@
     require('workhours.php');
 
     $app->get("/workedHours", function() {
-        echo Workhours::all()->values()->toJson();
+        $result = Workhours::all()->values()->toJson();
+        $result = str_replace('"pauze":1','"pauze":true',$result);
+        $result = str_replace('"pauze":0','"pauze":false',$result);
+        echo $result;
     });
 
     $app->delete('/workedHours/:id', function ($id) {
@@ -20,7 +23,7 @@
         $record->year = $data['year'];
         $record->start = $data['start'];
         $record->end = $data['end'];
-        $record->pauze = ($data['pauze'])? 1: 0;
+        $record->pauze = ($data['pauze'] === 'true' || $data['pauze'] === true)? 1: 0;
 
         if ($record->save()){
             echo $record->id;

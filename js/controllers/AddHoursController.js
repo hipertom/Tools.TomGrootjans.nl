@@ -17,6 +17,7 @@ function AddHoursController($scope, $http, $mdDialog, $route, workedService) {
     };
 
     $scope.submit = function (data) {
+        
         var obj = {
             id: Date.now(),
             day: data.date.getDay(),
@@ -25,9 +26,8 @@ function AddHoursController($scope, $http, $mdDialog, $route, workedService) {
             year: data.date.getFullYear(),
             start: data.start,
             end: data.end,
-            pauze: data.pauze
+            pauze: (data.pauze === "true") ? true : false
         };
-
         workedService.addItem(obj);
         $mdDialog.hide();
     }

@@ -12,6 +12,7 @@ function WorkedHoursController($scope, $http, workedService) {
 
     $scope.months = ["januari", "februari", "maart", "april", "mei", "juni", "july", "augustus", "september", "oktober", "november", "december"];
     $scope.removeItem = function (id) {
+        //console.log("Deleting item with id: "+ id);
         workedService.removeItem(id);
     };
 
