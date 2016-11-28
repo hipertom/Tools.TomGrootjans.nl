@@ -8,6 +8,8 @@
         .controller('addHoursController', AddHoursController)
         .service('workedService', WorkedServiceFun)
         .config(['$routeProvider', RouteController])
-        .config(['$mdDateLocaleProvider', datepickerConfig]);
+        .config(['$mdDateLocaleProvider', datepickerConfig])
+        .constant('apiEndpoint', '/edsa-Tools.TomGrootjans.nl/api/')
+        .constant('apiEndpointKey', 'supersecretkeyyoushouldnotcommittogithub');
 
 })(angular);
