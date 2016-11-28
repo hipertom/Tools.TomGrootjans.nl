@@ -1,4 +1,10 @@
 /.vscode
 /data *.json
-database.php
+
 vendor
+
+
+# secrets, passwords etc
+/api/users.php
+database.php
+supersecretdocx.js
