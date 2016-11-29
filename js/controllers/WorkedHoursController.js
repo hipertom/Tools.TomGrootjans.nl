@@ -8,9 +8,9 @@ function WorkedHoursController($scope, $http, workedService) {
 
 
 
-    $scope.weekdays = ["Zondag", "Maandag", "Dinsdag", "Woensdag", "Donderdag", "Zaterdag"];
+    $scope.weekdays = daysFull;
+    $scope.months = monthsFull;
 
-    $scope.months = ["januari", "februari", "maart", "april", "mei", "juni", "july", "augustus", "september", "oktober", "november", "december"];
     $scope.removeItem = function (id) {
         //console.log("Deleting item with id: "+ id);
         workedService.removeItem(id);

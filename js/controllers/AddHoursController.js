@@ -12,7 +12,7 @@ function AddHoursController($scope, $http, $mdDialog, $route, workedService) {
 
     $scope.formContent = { // default values for form
         start: startTimes[0],
-        end: endTimes[1],
+        end: endTimes[0],
         pauze: "true"
     };
 
@@ -39,4 +39,8 @@ function AddHoursController($scope, $http, $mdDialog, $route, workedService) {
 
 function datepickerConfig($mdDateLocaleProvider) {
     $mdDateLocaleProvider.firstDayOfWeek = 1;
+    $mdDateLocaleProvider.months = monthsFull;
+    $mdDateLocaleProvider.shortMonths = monthsShort;
+    $mdDateLocaleProvider.days = daysFull
+    $mdDateLocaleProvider.shortDays = daysShort;
 }

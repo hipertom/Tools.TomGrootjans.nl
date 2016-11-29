@@ -4,7 +4,7 @@ function WorkedServiceFun($http, apiEndpoint) {
     this.GetItems = function (cb) {
         var self = this;
 
-        $http.get(apiEndpoint+'workedHours', window.configHeader)
+        $http.get(apiEndpoint+'hours', window.configHeader)
             .then(
                 function (response) { // correct
                     var tempResponse = response.data;
@@ -22,7 +22,7 @@ function WorkedServiceFun($http, apiEndpoint) {
     this.addItem = function (obj) {
 
 
-        $http.post(apiEndpoint+'workedHours', obj, window.configHeader).then(
+        $http.post(apiEndpoint+'hours/new', obj, window.configHeader).then(
             response => {
                 Object.assign(obj, {
                     id: parseInt(response.data, 10)
@@ -37,7 +37,7 @@ function WorkedServiceFun($http, apiEndpoint) {
 
     this.removeItem = function (id) {
 
-        const deletion = $http.delete(`${apiEndpoint}workedHours/${id}`, window.configHeader).then(
+        const deletion = $http.delete(`${apiEndpoint}hours/delete/${id}`, window.configHeader).then(
             response => {
                 this.items.forEach((item, index) => {
                     if (item.id === id) {
