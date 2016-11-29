@@ -2,11 +2,9 @@ function WorkedHoursController($scope, $http, workedService) {
 
     workedService.GetItems(function (err, result) {
         if (err) throw err;
-
+        console.log(result);
         $scope.worked = result;
     });
-
-
 
     $scope.weekdays = daysFull;
     $scope.months = monthsFull;
