@@ -5,7 +5,10 @@
         </md-card-title-text>
     </md-card-title>
     <md-card-content>
+        
+
         <md-list class="md-dense" ng-repeat="month in worked[2016] track by $index" ng-if="month.length">
+        <!--
             
             <md-subheader ng-init="monthname = months[$index]" class="md-primary" aria-label="Pauze" >{{monthname}}</md-subheader>
             <md-list-item class="secondary-button-padding" ng-repeat="item in month track by $index">
@@ -23,7 +26,23 @@
                     <md-icon md-svg-icon="img/svg/close.svg"></md-icon>
                 </md-button>
             </md-list-item>
-        </md-list>
+        </md-list>-->
+        <md-subheader ng-init="monthname = months[$index]" class="md-primary" aria-label="Pauze" >{{monthname}}</md-subheader>
+            <md-list-item class="secondary-button-padding" ng-repeat="item in worked[2016][$index] track by $index">
+                <div class="md-list-item-text" flex="10">
+                    <span ng-init="day = weekdays[item.day]">{{day}}</span>
+                </div>
+                <div class="md-list-item-text" flex="10" ng-init="monthShort = (months[item.month] | limitTo: 3); year = '\'' + (item.year - 2000)">
+                    <span>{{item.date}} {{monthShort}} {{year}}</span>
+                </div>
+                <div class="md-list-item-text" flex="20">
+                    <span>{{item.start}} - {{item.end}}</span>
+                </div>
+                <md-checkbox disabled ng-model="item.pauze" aria-label="Pauze"></md-checkbox>
+                <md-button class="md-secondary md-icon-button" ng-click="removeItem(item.id)" aria-label="Delete">
+                    <md-icon md-svg-icon="img/svg/close.svg"></md-icon>
+                </md-button>
+            </md-list-item>
     </md-card-content>
     <md-card-actions class="md-padding" layout="row">
         <md-button class="md-raised" ng-click="goBack()">Go Back</md-button>

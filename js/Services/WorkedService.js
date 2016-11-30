@@ -3,18 +3,21 @@ function WorkedServiceFun($http, apiEndpoint) {
     this.items = new Array();
 
     this.GetItems = function (cb) {
-
+        var rest = this;
         $http.get(apiEndpoint + 'hours', window.configHeader)
             .then(
                 function (response) { // correct
-                    var tempResponse = response.data;
-                    tempResponse.sort(SortOnDate);
-                    return cb(null, sortMore(tempResponse));
+                    var data = response.data;
+                    data.sort(SortOnDate);
+                    //data = sortMore(data);
+                    rest.items = data;
+                    return cb(null, data);
                 },
                 function (response) { // error
                     console.log("Failed: " + response);
                     return cb(response.status, null);
                 });
+        return rest;
     }
 
     this.addItem = function (obj) {
@@ -54,38 +57,4 @@ function SortOnDate(a, b) {
     var aDate = new Date(a.year + "-" + a.month + "-" + a.date).getTime();
     var bDate = new Date(b.year + "-" + b.month + "-" + b.date).getTime();
     return ((aDate < bDate) ? -1 : ((aDate > bDate) ? 1 : 0));
-}
-
-function sortMore(array) {
-    var itemArray = array;
-    var allyears = [];
-    var allmonths = [];
-
-    itemArray.forEach((item, index) => {
-        if (allyears.indexOf(item.year) === -1) {
-            allyears.push(item.year);
-        }
-
-        if (allmonths.indexOf(item.month) === -1) {
-            allmonths.push(item.month);
-        }
-    });
-
-    var newArray = [];
-
-    allyears.forEach((year, index) => {
-        newArray[year] = [];
-        
-        allmonths.forEach((month, index) => {
-            newArray[year][month] = [];
-
-        });
-    });
-
-    
-    itemArray.forEach((item, index) => {
-        newArray[item.year][item.month].push(item);
-    });
-
-    return newArray;
 }

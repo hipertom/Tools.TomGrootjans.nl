@@ -18,3 +18,38 @@ const daysFull =
 
 const daysShort = 
 ["zo", "ma", "di", "wo", "do", "vr", "za"];
+
+
+function sortMore(array) {
+    var itemArray = array;
+    var allyears = [];
+    var allmonths = [];
+
+    itemArray.forEach((item, index) => {
+        if (allyears.indexOf(item.year) === -1) {
+            allyears.push(item.year);
+        }
+
+        if (allmonths.indexOf(item.month) === -1) {
+            allmonths.push(item.month);
+        }
+    });
+
+    var newArray = [];
+
+    allyears.forEach((year, index) => {
+        newArray[year] = [];
+        
+        allmonths.forEach((month, index) => {
+            newArray[year][month] = [];
+
+        });
+    });
+
+    
+    itemArray.forEach((item, index) => {
+        newArray[item.year][item.month].push(item);
+    });
+
+    return newArray;
+}
