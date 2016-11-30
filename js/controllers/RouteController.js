@@ -15,10 +15,13 @@ function RouteController($routeProvider) {
             .when("/item/hourcounter", {
                 templateUrl: "items/hourcounter.html"
             })
-            .when("/settings", {
-                templateUrl: "settings.html"
+            .when("/account", {
+                templateUrl: "account.html"
             })
             .when("/settings", {
                 templateUrl: "settings.html"
+            })
+            .when("/login", {
+                templateUrl: "login.html"
             });
     }
